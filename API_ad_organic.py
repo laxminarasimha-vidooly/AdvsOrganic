@@ -1,19 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 14 13:13:34 2019
-
-@author: chiru
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun 12 15:11:54 2019
-
-@author: chiru
-"""
-
 import os
-os.chdir("E:/Laxmi_Rnd/My Laptop/ad_vs_organic_test_updated")
 import datetime
 from flask import Flask,request,redirect,url_for,send_from_directory
 from datetime import date
@@ -24,7 +9,7 @@ import test_model
 from flask_mail import Mail,Message
 
 
-UPLOAD_FOLDER="E:/Laxmi_Rnd/My Laptop/ad_vs_organic_test_updated"
+UPLOAD_FOLDER="path"
 
 app=Flask(__name__)
 mail=Mail(app)
@@ -91,19 +76,10 @@ def process(file,email):
     
     
     return ' mail send & file saved'
-
-#    resp = flask.make_response(file.to_csv())
-#    resp.headers["Content-Disposition"] = "attachment; filename=AD_prediction.csv"
-#    resp.headers["Content-Type"] = "text/csv"
-#    return resp 
-
-
 @app.route('/download_file/<path:file_name>',methods=['GET','POST'])
 def download(file_name):
     print('inside download function')
     return send_from_directory(directory=UPLOAD_FOLDER,filename=file_name)
-
-
 
 @app.route('/channel_id_AD prediction',methods=['POST','GET'])
 def channel_ad_prediction():
@@ -203,8 +179,4 @@ def error_channel():
 </body>
 </html>
 '''
-
-
-    
-
 app.run() 
