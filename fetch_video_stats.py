@@ -1,17 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 30 16:42:02 2019
-
-@author: chiru
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 30 14:29:51 2019
-
-@author: chiru
-"""
-
+#Importing libraries
 import requests,json
 import pprint
 import pandas as pd
@@ -24,7 +11,7 @@ import operator
 import isodate
 import os
 
-os.chdir("E:/Laxmi_Rnd/My Laptop/ad_vs_organic_test_updated")
+os.chdir("ad_vs_organic_test_updated")
 
 # build class function
 class get_video_ids:
@@ -69,26 +56,6 @@ class get_video_ids:
     
     
         return r
-#
-#def video_stats(r_dict_1):
-#    print('getting videos ')
-#    try:
-#        for i in range(len(r_dict_1['items'])):
-#            df.loc[index,'video_id_list']=r_dict_1['items'][i].get('id',NA)
-#            df.loc[index,'video_title']=r_dict_1['items'][i]['snippet'].get('title',NA)
-#            df.loc[index,'channel_id']=r_dict_1['items'][i]['snippet'].get('channelId',NA)
-#            df.loc[index,'channel_title']=r_dict_1['items'][i]['snippet'].get('channelTitle',NA)
-#            df.loc[index,'views']=r_dict_1['items'][i]['statistics'].get('views',0)
-#            df.loc[index,'likes']=r_dict_1['items'][i]['statistics'].get('likeCount',0)
-#            df.loc[index,'dislikes']=r_dict_1['items'][i]['statistics'].get('dislikeCount',0)
-#            df.loc[index,'comment']=r_dict_1['items'][i]['statistics'].get('commentCount',0)
-#            df.loc[index,'category']=r_dict_1['items'][i]['snippet'].get('categoryId',0)
-#            df.loc[index,'publilshed_date']=r_dict_1['items'][i]['snippet'].get('publishedAt',NA)
-#            df.loc[index,'YT_duration']=r_dict_1['items'][i]['contentDetails'].get('duration',NA)
-#            index+=1
-#        print("current_shape",df.shape)
-#    except:
-#        print('unable to fetch videos')
 
     def video_stats(self,r_dict_1):
         print('getting videos ')
@@ -116,7 +83,7 @@ class get_video_ids:
         columns=['video_id_list','channel_id','channel_title','video_title','category','publilshed_date','YT_duration','views','likes','dislikes','comment']
         self.df=pd.DataFrame(columns=columns)
         # listing api_keys
-        self.api_key_list=["","AIzaSyDsMLnCTpmJJY0qd4rUHQGS3PiO9Tw9kEs",'AIzaSyC1ZpuaygN3plfgzH4I2oxrrE_KvJn9T54','AIzaSyCAvUODK49-fCM0UoPErb8yeRMsA_4XHpQ','AIzaSyAAbyrs8ofXHbyVDZV-u7DpH9c9IVAOok0']
+        self.api_key_list=["keys"]
         # exhausted keys are inserted into exceed key
         self.exceed_key=[]
         self.api_key=self.api_key_list[0]   
@@ -132,7 +99,6 @@ class get_video_ids:
         
         print(df_file.video_id)
         
-#        df_file['video_id']=df_file['video_id'].astype('str')
         #Check for duplicates
         check=df_file.duplicated(subset=['video_id'],keep='first')
         df_file=df_file.loc[~(check)]
