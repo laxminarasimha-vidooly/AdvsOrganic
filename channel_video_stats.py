@@ -1,11 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun 12 10:46:31 2019
-
-@author: chiru
-"""
-
-
+#Importing libraries
 import requests,json
 import pprint
 import pandas as pd
@@ -17,7 +10,7 @@ import operator
 import isodate
 import os
 
-os.chdir("E:/Laxmi_Rnd/My Laptop/ad_vs_organic_test_updated")
+os.chdir("ad_vs_organic_test_updated")
 
 # build class function
 class get_ch_video_ids:
@@ -35,9 +28,6 @@ class get_ch_video_ids:
         else:
             print("key finished")
             return None
-
-
-
 #function to get and check status code of url for fetching videos ids
     def get_url(self,token,chid,start_date,end_date):
         
@@ -121,7 +111,7 @@ class get_ch_video_ids:
         columns=['video_id_list','channel_id','channel_title','video_title','category','publilshed_date','YT_duration','views','likes','dislikes','comment']
         self.df=pd.DataFrame(columns=columns)
         # listing api_keys
-        self.api_key_list=["","AIzaSyDsMLnCTpmJJY0qd4rUHQGS3PiO9Tw9kEs",'AIzaSyC1ZpuaygN3plfgzH4I2oxrrE_KvJn9T54','AIzaSyCAvUODK49-fCM0UoPErb8yeRMsA_4XHpQ','AIzaSyAAbyrs8ofXHbyVDZV-u7DpH9c9IVAOok0']
+        self.api_key_list=["keys"]
         # exhausted keys are inserted into exceed key
         self.exceed_key=[]
         self.api_key=self.api_key_list[0]   
@@ -190,7 +180,7 @@ class get_ch_video_ids:
                 self.e_date.append(end_date)
                 start_date=end_date
                 #print(start_date,":::",end_date)        
-                
+    #video id stats updation        
     def fetch_stats(self,filename):  
         print(self.end_d-self.start_d)
         split_d=timedelta(days=self.gap_days)
