@@ -1,3 +1,4 @@
+#Importing libraries
 import os
 import datetime
 from flask import Flask,request,redirect,url_for,send_from_directory
@@ -10,15 +11,15 @@ from flask_mail import Mail,Message
 
 
 UPLOAD_FOLDER="path"
-
+#App config for API
 app=Flask(__name__)
 mail=Mail(app)
 app.config['UPLOAD_FOLDER']=UPLOAD_FOLDER
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT']=465
-app.config['MAIL_USERNAME']='chiranshu@vidooly.com'
-app.config['MAIL_PASSWORD']='bhatia95'
+app.config['MAIL_USERNAME']='user'
+app.config['MAIL_PASSWORD']='Password'
 app.config['MAIL_USE_TLS']=False
 app.config['MAIL_USE_SSL']=True
 mail=Mail(app)
@@ -68,7 +69,7 @@ def process(file,email):
     print(file_name)
     file.to_csv(file_name)  
     download_link='http://127.0.0.1:5000/download_file/'+file_name
-    msg=Message('download file link',sender='chiranshu@vidooly.com',recipients=[email])
+    msg=Message('download file link',sender='user',recipients=[email])
     msg.body='''click on download link
     '''+download_link
     mail.send(msg)
