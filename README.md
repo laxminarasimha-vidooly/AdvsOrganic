@@ -18,7 +18,9 @@ Process:
 5. API was built to provide access to the data team
 
 Accuracy:
+
  Classification model was showing 95% accuracy on test data
+ 
  Ad_per and organic_per models were giving close prediction values on test data
  
  
